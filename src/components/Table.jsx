@@ -14,21 +14,15 @@ export default function BasicTable({ rows }) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>fullName</TableCell>
+            <TableCell align="right">picurl</TableCell>
+            <TableCell align="right">fullName</TableCell>
+            <TableCell align="right">emailid</TableCell>
             <TableCell align="right">address</TableCell>
+            <TableCell align="right">contactNumbers</TableCell>
             <TableCell align="right">tenthPassingYear</TableCell>
             <TableCell align="right">twelfthPassingYear</TableCell>
-            <TableCell align="right">twelfthSpecialisation</TableCell>
-            <TableCell align="right">diplomaSpecialisation</TableCell>
-            <TableCell align="right">additionalSkills</TableCell>
-            <TableCell align="right">tenthCertificateUrl</TableCell>
-            <TableCell align="right">twelfthCertificateUrl</TableCell>
-            <TableCell align="right">contactNumbers</TableCell>
-            <TableCell align="right">aadhaarnumber</TableCell>
-            <TableCell align="right">emailid</TableCell>
-            <TableCell align="right">picurl</TableCell>
             <TableCell align="right">aadhaarurl</TableCell>
-            <TableCell align="right">jobDetails</TableCell>
+            <TableCell align="right">tenthCertificateUrl</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -37,25 +31,38 @@ export default function BasicTable({ rows }) {
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {row.fullName}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {row.address}
-              </TableCell>
-              <TableCell align="right">{row.tenthPassingYear}</TableCell>
-              <TableCell align="right">{row.twelfthPassingYear}</TableCell>
-              <TableCell align="right">{row.twelfthSpecialisation}</TableCell>
-              <TableCell align="right">{row.diplomaSpecialisation}</TableCell>
-              <TableCell align="right">{row.additionalSkills}</TableCell>
-              <TableCell align="right">{row.tenthCertificateUrl}</TableCell>
-              <TableCell align="right">{row.twelfthCertificateUrl}</TableCell>
-              <TableCell align="right">{row.contactNumbers}</TableCell>
-              <TableCell align="right">{row.aadhaarnumber}</TableCell>
+              <TableCell align="right">
+                <img 
+                src={row.picurl} 
+                alt={row.fullName}
+                height={'100px'} 
+                className="w-16 h-16 rounded-full object-cover"
+              /></TableCell>
+              <TableCell align="right">{row.fullName}</TableCell>
               <TableCell align="right">{row.emailid}</TableCell>
-              <TableCell align="right">{row.picurl}</TableCell>
-              <TableCell align="right">{row.aadhaarurl}</TableCell>
-              <TableCell align="right">{row.jobDetails}</TableCell>
+              <TableCell align="right">{row.address}</TableCell>
+              <TableCell align="right">{row.contactNumbers}</TableCell>
+              <TableCell align="right">{row.tenthPassingYear}</TableCell>
+              <TableCell align="right">{row.twelfthPassingYear || "N/A"}</TableCell>
+              <TableCell align="right"><a
+                href={row.aadhaarurl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 text-sm"
+              >
+                Aadhaar Document
+              </a>
+              </TableCell>
+              <TableCell align="right">
+                <a
+                href={row.tenthCertificateUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 text-sm"
+              >
+                10th Certificate
+              </a>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
