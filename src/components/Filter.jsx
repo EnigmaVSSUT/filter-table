@@ -2,7 +2,8 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
-import { Typography } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import BasicTable from "../components/Table";
 import { database } from '../../firebase'; 
 import { ref, onValue } from 'firebase/database';
@@ -22,6 +23,7 @@ export default function Filter() {
           ...data[key]
         }));
         setItems(itemsArray);
+        console.log(itemsArray);
       } else {
         setItems([]);
       }
@@ -32,7 +34,9 @@ export default function Filter() {
   }, []);
 
   if (loading) {
-    return <p className="text-center text-gray-600">Loading...</p>;
+    return <Box sx={{ height: '100vh' , width: '100vw' , display: 'flex' , justifyContent: 'center' , alignItems: 'center' }}>
+    <CircularProgress />
+  </Box>;
   }
 
   const uniqueUserData = Array.from(
@@ -54,7 +58,7 @@ export default function Filter() {
         options={uniqueUserData}
         getOptionLabel={(option) => option.tenthPassingYear}
         filterOptions={filterOptions}
-        sx={{ width: 300 }}
+        sx={{ width: 300 , marginBottom: '1.1rem'}}
         onChange={(event, newValue) => setChoice(newValue)} 
         renderInput={(params) => <TextField {...params} label="Tenth Passing Year" />}
       />
