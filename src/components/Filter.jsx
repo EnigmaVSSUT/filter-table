@@ -5,6 +5,7 @@ import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import BasicTable from "../components/Table";
+import { Typography } from '@mui/material';
 import { database } from '../../firebase'; 
 import { ref, onValue } from 'firebase/database';
 
@@ -54,13 +55,14 @@ export default function Filter() {
 
   return (
     <>
+    <Typography variant='h1' sx={{textAlign: 'center' , fontWeight: 'bold' ,  fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' }}}>APPLICATION FILTER PAGE</Typography>
       <Autocomplete
         options={uniqueUserData}
         getOptionLabel={(option) => option.tenthPassingYear}
         filterOptions={filterOptions}
-        sx={{ width: 300 , marginBottom: '1.1rem'}}
+        sx={{ width: 300 , marginBlock: '1rem'}}
         onChange={(event, newValue) => setChoice(newValue)} 
-        renderInput={(params) => <TextField {...params} label="Tenth Passing Year" />}
+        renderInput={(params) => <TextField {...params} label="10th Passing Year" />}
       />
       {
         userData.length > 0 ? (
